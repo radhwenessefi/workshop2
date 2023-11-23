@@ -1,0 +1,25 @@
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Recherche</span>
+  </div>
+  <input type="text" class="form-control" [(ngModel)]="searchTerm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+
+</div>
+
+<ul class="list-group"> 
+<li class="list-group-item" *ngFor="let R of listResidences">
+   <!--<img [src]="R.image" alt="">--> 
+    {{R.name}}
+    <button class="btn btn-primary" (click)="showApartment(R.id)">Show Apartment</button>  
+</li>  
+</ul>
+<ul class="list-group" *ngIf="listApat && listApat.length !== 0; else listapatIsZero">
+    <li class="list-group-item" *ngFor="let A of listApat">
+      {{ A.appartNum }}
+      <i class="bi bi-heart"(click)="goFavoris(A)"></i>
+    </li>
+  </ul>
+  <ng-template #listapatIsZero>
+    <p>La liste est vide.</p>
+  </ng-template>
+  
